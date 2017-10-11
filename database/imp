@@ -9,11 +9,53 @@ Hindi Bytes : b'\xe0\x\xa5..xa4\x82\n'
 Hence, Training is impossible while sticking to general convention of using bytes for languages.
 Thus, we recoded every byte processing while making sure training doesn't get affected.
 
+
 2.We had to apply small hack in "tensorflow/contrib/legacy_seq2seq/python/ops/seq2seq.py"
  because deepcopy was failing in latest tensorflow vesion(>1.0).
 
+3. Different parsing(Regex) for different languages:
+<see code>
 
-3.
+4.Log from  Training :
+
+global step 200 learning rate 0.5000 step-time 0.83 perplexity 35778.75
+  eval: bucket 0 perplexity 217.55
+  eval: bucket 1 perplexity 5003.65
+  eval: bucket 2 perplexity 16747.11
+  eval: bucket 3 perplexity 10088.76
+  .........
+  .....
+global step 44800 learning rate 0.3589 step-time 0.81 perplexity 4.20
+  eval: bucket 0 perplexity 1.73
+  eval: bucket 1 perplexity 3.15
+  eval: bucket 2 perplexity 6.56
+  eval: bucket 3 perplexity 11.30
+
+
+
+3 Datatset Analysis :
+As you may see from the following commands which finds sorted unique words from both the files:
+3.1. Command :  cat IITB.en-hi.hi | grep -o -E '\w+' | sort -u -f
+हंसना
+हंसी
+हँसते
+ह्म्म्म
+ग्रहालय
+...
+চন্দ্র
+বসু
+..
+...
+このクライアントと関連付けたいアカウントを入力してくた
+離脱する
+離脱しても
+離脱しました
+からの離脱に失敗
+離脱したら通知を表示する
+
+3.2. Command :  cat IITB.en-hi.en | grep -o -E '\w+' | sort -u -f
+
+
 
 
 

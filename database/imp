@@ -1,0 +1,19 @@
+Programmatic Problems:
+1.In Python 3, Different languages behave differently when encoded in bytes for e.g
+
+English : 'Give your application an accessibility workout\n'
+Hindi : 'अपने अनुप्रयोग को पहुंचनीयता व्यायाम का लाभ दें\n'
+
+English Bytes : b'Give your application an accessibility workout\n'
+Hindi Bytes : b'\xe0\x\xa5..xa4\x82\n'
+Hence, Training is impossible while sticking to general convention of using bytes for languages.
+Thus, we recoded every byte processing while making sure training doesn't get affected.
+
+2.We had to apply small hack in "tensorflow/contrib/legacy_seq2seq/python/ops/seq2seq.py"
+ because deepcopy was failing in latest tensorflow vesion(>1.0).
+
+
+3.
+
+
+

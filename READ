@@ -1,0 +1,1 @@
+CUDA_VISIBLE_DEVICES=0 /usr/local/anaconda3/bin/python3 /home/himanshu/DL/caption/PracticeNN/models/tutorials/rnn/translate/translate.py --decode --data_dir database/ --train_dir trainbase/

@@ -35,11 +35,38 @@ global step 44800 learning rate 0.3589 step-time 0.81 perplexity 4.20
 
 3 Datatset Analysis :
 As you may see from the following commands which finds sorted unique words from both the files:
-3.1. Command :  cat IITB.en-hi.hi | grep -o -E '\w+' | sort -u -f
+
+
+Dataset contains mixture of foreign languages with Hinglish in English corpus.
+In hindi corpus, combination of hindi and exist also exist, on the other hand
+hinglish entries are quite sparse.
+
+ similar noisy entries exist in hindi corpus too.
+
+3.1. Command :  cat IITB.en-hi.en | grep -o -E '\w+' | sort -u -f
+<Rest of English>
+...
+0FF00
+00FIC0097
+00h
+00m
+00p
+00pm
+0100
+01000
+...
+Yashaarat
+Yashaskara
+Yashodha
+Yashodhan
+...
+під
+підключатись
+Поведінка
+поддържани
+...
 हंसना
 हंसी
-हँसते
-ह्म्म्म
 ग्रहालय
 ...
 চন্দ্র
@@ -48,14 +75,49 @@ As you may see from the following commands which finds sorted unique words from 
 ...
 このクライアントと関連付けたいアカウントを入力してくた
 離脱する
-離脱しても
-離脱しました
 からの離脱に失敗
 離脱したら通知を表示する
 
-3.2. Command :  cat IITB.en-hi.en | grep -o -E '\w+' | sort -u -f
+3.2. Command :  cat IITB.en-hi.hi | grep -o -E '\w+' | sort -u -f
+<Rest of Hindi>
+...
+0000इंजीनियरों
+0001
+00012341
+0002
+0003
 
-
-
-
-
+...
+cale
+localhost
+LOCALITY
+Locate
+locatin
+Location
+....
+हैcollapse
+हैcommand0
+हैcommand1
+हैcommand10
+हैcommand11
+हैcommand2
+...
+होंडुरासbrazil
+होंडुरासCity
+होंडुरासName
+होंडुरासworld
+    ...
+ःछ्11
+ःश्
+...
+ज
+બાપુ
+ਦਿੱਲੀ
+চন্দ্র
+ঠাকুর
+বসু
+রবীন্দ্রনাথ
+সুভাষ
+中國
+秦
+设

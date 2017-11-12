@@ -24,7 +24,7 @@ import re
 import tarfile
 
 from six.moves import urllib
-
+import nltk.tokenize
 from tensorflow.python.platform import gfile
 import tensorflow as tf
 
@@ -155,7 +155,12 @@ def create_vocabulary(vocabulary_path, data_path, max_vocabulary_size,
         if None, basic_tokenizer will be used.
       normalize_digits: Boolean; if true, all digits are replaced by 0s.
     """
-    from HindiTokenizer import Tokenizer
+
+
+
+    #from HindiTokenizer import Tokenizer
+    
+
     if not gfile.Exists(vocabulary_path):
         print("Creating vocabulary %s from data %s" % (vocabulary_path, data_path))
         vocab = {}
@@ -167,7 +172,8 @@ def create_vocabulary(vocabulary_path, data_path, max_vocabulary_size,
                     print("  processing line %d" % counter)
                 # line = tf.compat.as_bytes(line)
                 if isHindi:
-                    tokens = tokenizer(line) if tokenizer else Tokenizer(line).return_final_list();
+                    #tokens = tokenizer(line) if tokenizer else Tokenizer(line).return_final_list();
+                    tokens = tokenizer(line) if tokenizer else nltk.tokenize.word_tokenize(line);
                     for w in tokens:
                         word = _DIGIT_RE.sub("0", (w)) if normalize_digits else w
                         if word in vocab:
@@ -245,8 +251,9 @@ def sentence_to_token_ids(sentence, vocabulary,
     """
 
     if isHindi:
-        from HindiTokenizer import Tokenizer
-        words = Tokenizer(sentence).return_final_list()
+        #from HindiTokenizer import Tokenizer
+        #words = Tokenizer(sentence).return_final_list()
+        words = nltk.tokenize.word_tokenize(line);
         if not normalize_digits:
             return [vocabulary.get(w, UNK_ID) for w in words]
         # Normalize digits by 0 before looking words up in the vocabulary.

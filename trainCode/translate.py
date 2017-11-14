@@ -134,7 +134,10 @@ def create_model(session, forward_only):
       FLAGS.learning_rate_decay_factor,
       forward_only=forward_only,
       dtype=dtype)
-  ckpt = tf.train.get_checkpoint_state(FLAGS.train_dir)
+  train_dir = ""
+  ckpt = tf.train.get_checkpoint_state("/home/himanshu/DL/caption/PracticeNN/trainbase/")
+
+
   if ckpt and tf.train.checkpoint_exists(ckpt.model_checkpoint_path):
     print("Reading model parameters from %s" % ckpt.model_checkpoint_path)
     model.saver.restore(session, ckpt.model_checkpoint_path)
@@ -276,7 +279,7 @@ def decode():
       else:
         logging.warning("Sentence truncated: %s", sentence)
 
-      # Get a 1-element batch to feed the sentence to the model.
+      # Get a 1-element batch to feed the sentence to the model.boy
       encoder_inputs, decoder_inputs, target_weights = model.get_batch(
           {bucket_id: [(token_ids, [])]}, bucket_id)
       # Get output logits for the sentence.
